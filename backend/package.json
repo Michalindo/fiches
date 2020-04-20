@@ -1,0 +1,29 @@
+{
+	"name": "pons",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/index.js",
+	"scripts": {
+		"server": "node index.js",
+		"client": "npm start --prefix client",
+		"client-install": "cd client && npm install",
+		"develop": "nodemon index.js",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"lint": "eslint"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.19.2",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"mongoose": "^5.9.9"
+	},
+	"devDependencies": {
+		"concurrently": "^5.1.0",
+		"eslint": "^6.8.0",
+		"nodemon": "^2.0.3"
+	}
+}
