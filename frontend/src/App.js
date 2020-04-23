@@ -1,20 +1,20 @@
 import React, { Fragment } from 'react';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.scss';
 import SearchPage from './containers/SearchPage/SearchPage';
 import Layout from './hoc/Layout/Layout';
+import { links } from './shared/links';
 
 export default function App() {
 	return (
-		<div>
+		<Fragment>
 			<Layout>
-				<Router>
-					<Switch>
-						<Route path='/' component={SearchPage} />
-						<Route path='/' component={SearchPage} />
-					</Switch>
-				</Router>
+				<Switch>
+					<Route path={links.search} component={SearchPage} />
+					<Route path={links.fiches} />
+					<Route path={links.homePage} component={SearchPage} />
+				</Switch>
 			</Layout>
-		</div>
+		</Fragment>
 	);
 }

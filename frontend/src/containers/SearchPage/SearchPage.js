@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import * as data from '../../dummyResponse';
 import Button from '../../UI/Button/Button';
@@ -21,7 +21,7 @@ export default function SearchPage() {
 	}, []);
 
 	return (
-		<div className='App'>
+		<Fragment>
 			<SearchBar />
 			<ul>
 				{fiches.map((element, index) => {
@@ -44,10 +44,10 @@ export default function SearchPage() {
 					);
 				})}
 			</ul>
-			<Button clicked={() => saveSelectedFiches(selectedFiches)}>
+			<Button clicked={() => saveSelectedFiches(selectedFiches)} disabled>
 				{strings.button.saveSelectedFiches}
 			</Button>
-		</div>
+		</Fragment>
 	);
 }
 

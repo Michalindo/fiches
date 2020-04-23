@@ -1,0 +1,10 @@
+.logo {
+  display: flex;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  font-weight: 600;
+  background: -webkit-linear-gradient(45deg, #3f5e5a, #53bdee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

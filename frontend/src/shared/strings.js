@@ -5,4 +5,9 @@ export const strings = {
 	button: {
 		saveSelectedFiches: 'Save Selected Fiches',
 	},
+	navigationItems: {
+		homePage: 'Home Page',
+		search: 'Search',
+		yourFiches: 'Your Fiches',
+	},
 };
