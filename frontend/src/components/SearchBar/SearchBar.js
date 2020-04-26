@@ -3,6 +3,7 @@ import axios from 'axios';
 import { strings } from '../../shared/strings';
 import useDebounce from '../../utils/useDebounce';
 import './SearchBar.scss';
+import Input from '../../UI/Input/Input';
 
 export default function SearchBar() {
 	const [query, setQuery] = useState('');
@@ -24,11 +25,12 @@ export default function SearchBar() {
 	// }, [debouncedSearchTerm]);
 
 	return (
-		<div>
-			<input
-				className='searchbar'
+		<div className='searchbar'>
+			<p className='searchbar-description'>{strings.searchBar.description}</p>
+			<Input
+				className='searchbar-input'
+				type='input'
 				placeholder={strings.searchBar.inputPlaceholder}
-				// onChange={(e) => setQuery(e.target.value, 500)}
 			/>
 		</div>
 	);

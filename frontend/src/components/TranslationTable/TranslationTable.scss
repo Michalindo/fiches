@@ -1,0 +1,16 @@
+.translationTable {
+	border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 3rem;
+	&-heading,
+	&-data {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 1rem;
+	}
+	&-row {
+		&:nth-child(even) {
+			background-color: #e0ddcf;
+    }
+	}
+}
