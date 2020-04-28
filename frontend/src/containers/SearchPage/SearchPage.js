@@ -39,7 +39,7 @@ export default function SearchPage() {
 		<Fragment>
 			<SearchBar />
 			<TranslationList fiches={fiches} checkboxClicked={checkboxClicked} />
-			<Button clicked={() => saveSelectedFiches(selectedFiches)} className="button">
+			<Button clicked={() => saveSelectedFiches(selectedFiches)} className="button" alignSelf="center">
 				{strings.button.saveSelectedFiches}
 			</Button>
 		</Fragment>
