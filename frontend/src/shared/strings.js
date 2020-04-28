@@ -5,7 +5,8 @@ export const strings = {
 	},
 	button: {
 		saveSelectedFiches: 'Save Selected Fiches',
-		edit: 'Edit Fiches',
+		edit: 'Edit Mode',
+		saveChanges: 'Save Changes'
 	},
 	navigationItems: {
 		homePage: 'Home Page',

@@ -21,6 +21,7 @@ export default function Input(props) {
 					className={props.className}
 					type='checkbox'
 					onClick={props.clicked}
+					defaultChecked={props.isChecked}
 				/>
 			);
 			break;
