@@ -5,6 +5,7 @@ export const strings = {
 	},
 	button: {
 		saveSelectedFiches: 'Save Selected Fiches',
+		edit: 'Edit Fiches',
 	},
 	navigationItems: {
 		homePage: 'Home Page',
@@ -15,5 +16,8 @@ export const strings = {
 		source: 'Source word',
 		translation: 'Translation',
 		save: 'Pick the words to save',
+	},
+	fichesList: {
+		howTo: 'Click on fiche to check out translation',
 	},
 };
