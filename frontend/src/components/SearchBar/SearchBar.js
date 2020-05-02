@@ -1,29 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { strings } from '../../shared/strings';
+import React, { useEffect, useState, useContext } from 'react';
 import useDebounce from '../../utils/useDebounce';
-import './SearchBar.scss';
 import Input from '../../UI/Input/Input';
+import { strings } from '../../shared/strings';
+import { Context } from '../../shared/store';
+import './SearchBar.scss';
 
 export default function SearchBar() {
+	const [, dispatch] = useContext(Context);
 	const [query, setQuery] = useState('');
-	const [data, setData] = useState({});
-	const [isSearching, setIsSearching] = useState(false);
 
-	const debouncedSearchTerm = useDebounce(query, 1000);
+	const debouncedSearchTerm = useDebounce(query, 5000);
 
 	useEffect(() => {
 		if (debouncedSearchTerm) {
-			setIsSearching(true);
-			test(debouncedSearchTerm).then((res) => {
-				console.log(res);
-				setIsSearching(false);
-				// setData(res);
-			});
-		} else {
-			setData([]);
+			dispatch({ type: 'updateSearchQuery', payload: debouncedSearchTerm });
 		}
-	}, [debouncedSearchTerm]);
+	}, [debouncedSearchTerm, dispatch]);
 
 	return (
 		<div className='searchbar'>
@@ -37,16 +29,4 @@ export default function SearchBar() {
 			/>
 		</div>
 	);
-}
-
-async function makeApiCall(searchTerm) {
-	const URL1 = `http://localhost:3001/ponsApi/dict/${searchTerm}`;
-	const response = await axios.get(URL1);
-	return response.data;
-}
-
-function test(searchTerm) {
-	return new Promise((resolve, reject) => {
-		resolve(searchTerm);
-	});
 }
