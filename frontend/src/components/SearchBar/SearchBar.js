@@ -28,6 +28,7 @@ export default function SearchBar() {
 		<div className='searchbar'>
 			<p className='searchbar-description'>{strings.searchBar.description}</p>
 			<Input
+				label='searchbar-label'
 				className='searchbar-input'
 				type='input'
 				placeholder={strings.searchBar.inputPlaceholder}

@@ -24,12 +24,7 @@ export default function SearchPage() {
 
 	const checkboxClicked = useCallback(
 		(element) => {
-			if (selectedFiches.indexOf(element) === -1) {
-				selectedFiches.push(element);
-			} else {
-				const index = selectedFiches.indexOf(element);
-				selectedFiches.splice(index, 1);
-			}
+			element.selected= !element.selected
 			setSelectedFiches(selectedFiches);
 		},
 		[selectedFiches]

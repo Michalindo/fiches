@@ -28,7 +28,7 @@ export default function Fiche(props) {
 	return (
 		<Fragment>
 			<div className='fiches-item' onClick={() => rotate()}>
-				<div className={`fiches-item-inner ${isRotated ? 'is-rotated' : ''}`}>
+				<div className={`fiches-item-inner ${!isRotated ? 'is-rotated' : ''}`}>
 					<div className='fiches-item-face fiches-item-face--front'>
 						<p>{props.el.searchWord}</p>
 					</div>
@@ -39,21 +39,29 @@ export default function Fiche(props) {
 									<div key={i} className='fiches-item-translations'>
 										<p>{el.source.replace(/\u21b5/g, '')}</p>
 										<p>{el.target.replace(/\u21b5/g, '')}</p>
-										<div className='fiches-item-controls'>
-											<Input
-												clicked={(e) => clicken(e)}
-												elementType='checkbox'
-												isChecked={el.selected}
-											></Input>
-											<Button clicked={(e) => clicken(e)}>X</Button>
-										</div>
+										<Input
+											clicked={(e) => clicken(e)}
+											elementType='checkbox'
+											isChecked={el.selected}
+										></Input>
 									</div>
 								);
 							}
 						})}
-						<Button className='button' clicked={(e) => clicken(e)}>
-							{strings.button.saveChanges}
-						</Button>
+						<div className='fiches-item-controls'>
+							<Button
+								className='button button--small success'
+								clicked={(e) => clicken(e)}
+							>
+								{strings.button.saveChanges}
+							</Button>
+							<Button
+								className='button button--small danger'
+								clicked={(e) => clicken(e)}
+							>
+								{strings.button.deleteFiche}
+							</Button>
+						</div>
 					</div>
 				</div>
 			</div>

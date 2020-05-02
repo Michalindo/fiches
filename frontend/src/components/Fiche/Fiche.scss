@@ -1,6 +1,6 @@
 .fiches {
   &-item {
-    height: 25rem;
+    height: 28rem;
     perspective: 100rem;
 
     &-inner {
@@ -52,21 +52,27 @@
       justify-content: flex-start;
       text-align: left;
       border-bottom: 1px solid #b6b4a9;
-      &:not(:last-child) {
-        margin-bottom: 0.5rem;
-      }
+      align-items: center;
+      padding: 2px 0;
       p {
         flex: 1;
         font-size: 1.6rem;
-
       }
     }
 
     &-controls {
+      margin-top: .5rem;
+      width: 100%;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
+
+      &:first-child{
+        padding-right: 10px;
+      }
     }
   }
+  
 }
 
 .centerFlex {
