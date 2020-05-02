@@ -25,6 +25,23 @@ export default function Fiche(props) {
 		e.stopPropagation();
 	};
 
+	const controlButtons = !props.editMode && (
+		<div className='fiches-item-controlButtons'>
+			<Button
+				className='button button--small success'
+				clicked={(e) => clicken(e)}
+			>
+				{strings.button.saveChanges}
+			</Button>
+			<Button
+				className='button button--small danger'
+				clicked={(e) => clicken(e)}
+			>
+				{strings.button.deleteFiche}
+			</Button>
+		</div>
+	);
+
 	return (
 		<Fragment>
 			<div className='fiches-item' onClick={() => rotate()}>
@@ -43,25 +60,13 @@ export default function Fiche(props) {
 											clicked={(e) => clicken(e)}
 											elementType='checkbox'
 											isChecked={el.selected}
-										></Input>
+											display={`${!props.editMode ? 'block' : 'none'}`}
+										/>
 									</div>
 								);
 							}
 						})}
-						<div className='fiches-item-controls'>
-							<Button
-								className='button button--small success'
-								clicked={(e) => clicken(e)}
-							>
-								{strings.button.saveChanges}
-							</Button>
-							<Button
-								className='button button--small danger'
-								clicked={(e) => clicken(e)}
-							>
-								{strings.button.deleteFiche}
-							</Button>
-						</div>
+						{controlButtons}
 					</div>
 				</div>
 			</div>

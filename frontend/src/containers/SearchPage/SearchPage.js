@@ -21,7 +21,6 @@ export default function SearchPage() {
 	const [fiches, setFiches] = useState([]);
 	const [isSearching, setIsSearching] = useState(false);
 
-
 	const translations = data.default[0].hits[0].roms[0].arabs[0].translations;
 	const translationsParsed = translations.map((element) => {
 		return {
@@ -72,8 +71,8 @@ const saveSelectedFiches = (fiches) => {
 	console.log(fiches);
 };
 
-async function makeApiCall(searchTerm) {
-	const URL1 = `http://localhost:3001/ponsApi/dict/${searchTerm}`;
-	const response = await axios.get(URL1);
-	return response.data;
-}
+// async function makeApiCall(searchTerm) {
+// 	const URL1 = `http://localhost:3001/ponsApi/dict/${searchTerm}`;
+// 	const response = await axios.get(URL1);
+// 	return response.data;
+// }

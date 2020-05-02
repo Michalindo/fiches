@@ -60,19 +60,18 @@
       }
     }
 
-    &-controls {
-      margin-top: .5rem;
+    &-controlButtons {
+      margin-top: 0.5rem;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: flex-start;
 
-      &:first-child{
+      &:first-child {
         padding-right: 10px;
       }
     }
   }
-  
 }
 
 .centerFlex {
