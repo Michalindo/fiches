@@ -16,7 +16,7 @@
 	overflow: hidden;
 
 	&::after {
-		content: '';
+		content: "";
 		background: white;
 		display: block;
 		position: absolute;
@@ -42,15 +42,22 @@
 			transition: 0s;
 		}
 	}
-}
 
-.button:disabled {
-	color: #cccccc;
-	cursor: not-allowed;
+	&:disabled {
+		color: #cccccc;
+		cursor: not-allowed;
+	}
+
+	&--small {
+		background-color: transparent;
+		padding: 0.5rem;
+		margin: 0;
+		font-size: 1.6rem;
+	}
 }
 
 .success {
-	color: #5c9210;
+	color: #3ea031;
 }
 
 .danger {

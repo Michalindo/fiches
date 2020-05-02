@@ -21,7 +21,17 @@ export default function Input(props) {
 					className={props.className}
 					type='checkbox'
 					onClick={props.clicked}
+					defaultChecked={props.isChecked}
 				/>
+			);
+			break;
+
+		case 'switch':
+			inputElement = (
+				<Fragment>
+					<input type='checkbox' onClick={props.clicked} />
+					<span className='slider round'></span>
+				</Fragment>
 			);
 			break;
 		default:
@@ -37,8 +47,10 @@ export default function Input(props) {
 
 	return (
 		<Fragment>
-			<label className={props.className}>{props.label}</label>
-			{inputElement}
+			<label className={props.label}>
+				<p>{props.labelText}</p>
+				{inputElement}
+			</label>
 		</Fragment>
 	);
 }

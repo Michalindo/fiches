@@ -6,7 +6,7 @@ export default function Button(props) {
 		<button
 			onClick={props.clicked}
 			disabled={props.disabled}
-			className={[props.className].join('button')}
+			className={[props.className].join(' ')}
 			style={{ alignSelf: props.alignSelf }}
 		>
 			{props.children}
