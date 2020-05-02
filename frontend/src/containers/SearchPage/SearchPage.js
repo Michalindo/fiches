@@ -7,7 +7,7 @@ import TranslationList from '../../components/TranslationTable/TranslationTable'
 
 export default function SearchPage() {
 	const [fiches, setFiches] = useState([]);
-	const [selectedFiches, setSelectedFiches] = useState([]);
+	// const [selectedFiches, setSelectedFiches] = useState([]);
 
 	const translations = data.default[0].hits[0].roms[0].arabs[0].translations;
 	const translationsParsed = translations.map((element) => {
@@ -24,23 +24,27 @@ export default function SearchPage() {
 
 	const checkboxClicked = useCallback(
 		(element) => {
-			element.selected= !element.selected
-			setSelectedFiches(selectedFiches);
+			element.selected = !element.selected;
+			setFiches(fiches);
 		},
-		[selectedFiches]
+		[fiches]
 	);
 
 	return (
 		<Fragment>
 			<SearchBar />
 			<TranslationList fiches={fiches} checkboxClicked={checkboxClicked} />
-			<Button clicked={() => saveSelectedFiches(selectedFiches)} className="button" alignSelf="center">
+			<Button
+				clicked={() => saveSelectedFiches(fiches)}
+				className='button'
+				alignSelf='center'
+			>
 				{strings.button.saveSelectedFiches}
 			</Button>
 		</Fragment>
 	);
 }
 
-const saveSelectedFiches = (selectedFiches) => {
-	console.log(selectedFiches);
+const saveSelectedFiches = (fiches) => {
+	console.log(fiches);
 };
