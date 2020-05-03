@@ -9,8 +9,9 @@ router.get('/dictionaries', async (req, res) => {
 });
 
 router.get('/dict/:searchTerm', async (req, res) => {
-	const searchTerm = req.params.searchTerm;
-	const url = `https://api.pons.com/v1/dictionary?q=${searchTerm}&l=deen`;
+	let searchTerm = encodeURI(req.params.searchTerm);
+	const url = `https://api.pons.com/v1/dictionary?q=${searchTerm}&l=depl&in=pl`;
+	console.log(url);
 	const headers = {
 		'X-Secret': process.env.PONS_API_KEY,
 	};
