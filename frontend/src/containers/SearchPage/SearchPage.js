@@ -6,40 +6,36 @@ import React, {
 	useContext,
 } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import * as data from '../../dummyResponse';
 import Button from '../../UI/Button/Button';
 import { strings } from '../../shared/strings';
-import TranslationList from '../../components/TranslationTable/TranslationTable';
-
+import TranslationTable from '../../components/TranslationTable/TranslationTable';
+import { fetchFiches } from '../../utils/apiFunctions';
 import { Context } from '../../shared/store';
-
-import axios from 'axios';
 
 export default function SearchPage() {
 	const [state] = useContext(Context);
-
 	const [fiches, setFiches] = useState([]);
 	const [isSearching, setIsSearching] = useState(false);
 
-	const translations = data.default[0].hits[0].roms[0].arabs[0].translations;
-	const translationsParsed = translations.map((element) => {
-		return {
-			source: element.source.replace(/<\/?[^>]+>/gi, ''),
-			target: element.target.replace(/<\/?[^>]+>/gi, ''),
-			selected: false,
-		};
-	});
-
-	useEffect(() => {
-		setFiches(translationsParsed);
-	}, []);
-
 	useEffect(() => {
 		if (state.searchQuery !== '') {
-			// makeApiCall(state.searchQuery).then((res) => {
-			// 	setIsSearching(true);
-			// 	console.log(res);
-			// });
+			setIsSearching(true);
+			fetchFiches(state.searchQuery).then((res) => {
+				setIsSearching(false);
+				if (res[0]) {
+					const translations = res[0].hits[0].roms[0].arabs[0].translations;
+					const translationsParsed = translations.map((element) => {
+						return {
+							source: element.source.replace(/<\/?[^>]+>/gi, ''),
+							target: element.target.replace(/<\/?[^>]+>/gi, ''),
+							selected: false,
+						};
+					});
+					setFiches(translationsParsed);
+				} else {
+					setFiches([]);
+				}
+			});
 		}
 	}, [state.searchQuery]);
 
@@ -51,10 +47,13 @@ export default function SearchPage() {
 		[fiches]
 	);
 
-	return (
+	let translationList = (
 		<Fragment>
-			<SearchBar />
-			<TranslationList fiches={fiches} checkboxClicked={checkboxClicked} />
+			<TranslationTable
+				fiches={fiches}
+				checkboxClicked={checkboxClicked}
+				isSearching
+			/>
 			<Button
 				clicked={() => saveSelectedFiches(fiches)}
 				className='button'
@@ -62,7 +61,17 @@ export default function SearchPage() {
 			>
 				{strings.button.saveSelectedFiches}
 			</Button>
-			<p>{state.searchQuery}</p>
+		</Fragment>
+	);
+
+	if (isSearching) {
+		translationList = <div>Loading...</div>;
+	}
+
+	return (
+		<Fragment>
+			<SearchBar />
+			{translationList}
 		</Fragment>
 	);
 }
@@ -70,9 +79,3 @@ export default function SearchPage() {
 const saveSelectedFiches = (fiches) => {
 	console.log(fiches);
 };
-
-// async function makeApiCall(searchTerm) {
-// 	const URL1 = `http://localhost:3001/ponsApi/dict/${searchTerm}`;
-// 	const response = await axios.get(URL1);
-// 	return response.data;
-// }

@@ -3,7 +3,7 @@ import './TranslationTable.scss';
 import Input from '../../UI/Input/Input';
 import { strings } from '../../shared/strings';
 
-export default function TranslationList(props) {
+export default function TranslationTable(props) {
 	return (
 		<table className='translationTable'>
 			<thead>

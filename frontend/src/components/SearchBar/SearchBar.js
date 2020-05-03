@@ -9,7 +9,7 @@ export default function SearchBar() {
 	const [, dispatch] = useContext(Context);
 	const [query, setQuery] = useState('');
 
-	const debouncedSearchTerm = useDebounce(query, 5000);
+	const debouncedSearchTerm = useDebounce(query, 1000);
 
 	useEffect(() => {
 		if (debouncedSearchTerm) {
@@ -25,7 +25,7 @@ export default function SearchBar() {
 				className='searchbar-input'
 				type='input'
 				placeholder={strings.searchBar.inputPlaceholder}
-				changed={(e) => setQuery(e.target.value)}
+				changed={(e) => setQuery(e.target.value.toLowerCase())}
 			/>
 		</div>
 	);
