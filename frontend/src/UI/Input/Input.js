@@ -22,6 +22,7 @@ export default function Input(props) {
 					type='checkbox'
 					onClick={props.clicked}
 					defaultChecked={props.isChecked}
+					style={{ display: props.display }}
 				/>
 			);
 			break;
