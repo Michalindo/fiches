@@ -12,13 +12,16 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-	const fiche = new Fiche({
-		searchWord: req.body.searchWord,
-		results: req.body.results,
-	});
-
-	const savedFiche = await fiche.save();
-	res.status(201).json(savedFiche);
+	try {
+		const fiche = new Fiche({
+			searchWord: req.body.searchWord,
+			results: req.body.results,
+		});
+		const savedFiche = await fiche.save();
+		res.status(201).json(savedFiche);
+	} catch (err) {
+		res.json({ message: err });
+	}
 });
 
 router.delete('/', async (req, res) => {
