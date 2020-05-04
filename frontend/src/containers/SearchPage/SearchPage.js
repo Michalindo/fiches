@@ -9,7 +9,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../UI/Button/Button';
 import { strings } from '../../shared/strings';
 import TranslationTable from '../../components/TranslationTable/TranslationTable';
-import { fetchFiches } from '../../utils/apiFunctions';
+import { getTranslations, postFiche } from '../../utils/apiFunctions';
 import { Context } from '../../shared/store';
 
 export default function SearchPage() {
@@ -17,10 +17,15 @@ export default function SearchPage() {
 	const [fiches, setFiches] = useState([]);
 	const [isSearching, setIsSearching] = useState(false);
 
+	const data = {
+		searchWord: state.searchQuery,
+		results: fiches,
+	};
+
 	useEffect(() => {
 		if (state.searchQuery !== '') {
 			setIsSearching(true);
-			fetchFiches(state.searchQuery).then((res) => {
+			getTranslations(state.searchQuery).then((res) => {
 				setIsSearching(false);
 				if (res[0]) {
 					const translations = res[0].hits[0].roms[0].arabs[0].translations;
@@ -33,6 +38,7 @@ export default function SearchPage() {
 					});
 					setFiches(translationsParsed);
 				} else {
+					setIsSearching(false);
 					setFiches([]);
 				}
 			});
@@ -55,7 +61,7 @@ export default function SearchPage() {
 				isSearching
 			/>
 			<Button
-				clicked={() => saveSelectedFiches(fiches)}
+				clicked={() => postFiche(data)}
 				className='button'
 				alignSelf='center'
 			>
