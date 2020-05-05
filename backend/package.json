@@ -1,14 +1,10 @@
 {
-	"name": "pons",
+	"name": "backend",
 	"version": "1.0.0",
 	"description": "",
-	"main": "src/index.js",
 	"scripts": {
-		"server": "node index.js",
-		"client": "npm start --prefix client",
-		"client-install": "cd client && npm install",
+		"server": "node src/index.js",
 		"develop": "nodemon index.js",
-		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"lint": "eslint"
 	},
 	"keywords": [],
