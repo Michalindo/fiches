@@ -1,10 +1,12 @@
+/* eslint-disable no-undef */
 // const mongoose = require('mongoose');
 const Fiche = require('../models/Fiche');
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../index');
-const should = chai.should();
+
+chai.should();
 
 chai.use(chaiHttp);
 
@@ -14,9 +16,7 @@ describe('Fiches', () => {
 			done();
 		});
 	});
-	/*
-	 * Test the /GET route
-	 */
+
 	describe('/GET fiche', () => {
 		it('it should GET all fiches', (done) => {
 			chai
