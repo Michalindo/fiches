@@ -81,7 +81,3 @@ export default function SearchPage() {
 		</Fragment>
 	);
 }
-
-const saveSelectedFiches = (fiches) => {
-	console.log(fiches);
-};
