@@ -1,0 +1,15 @@
+.navigation {
+  &-item:not(:last-child) {
+    margin-right: 2rem;
+  }
+
+  &-link {
+    color: #3f5e5a;
+    font-weight: bold;
+
+    &:hover,
+    &:active {
+      color: #7d869c;
+    }
+  }
+}

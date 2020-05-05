@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.scss';
-import SearchBar from './components/SearchBar/SearchBar';
-import * as data from './dummyResponse';
+import SearchPage from './containers/SearchPage/SearchPage';
+import Layout from './hoc/Layout/Layout';
+import FichesPage from './containers/FichesPage/FichesPage';
+import { links } from './shared/links';
+import { Store } from './shared/store';
 
-function App() {
-	const translations = data.default[0].hits[0].roms[0].arabs[0].translations;
-	console.log('App -> translations', translations);
-	const translationsParsed = translations.map((element) => {
-		return {
-			source: element.source.replace(/<\/?[^>]+>/gi, ''),
-			target: element.target.replace(/<\/?[^>]+>/gi, ''),
-		};
-	});
-
+export default function App() {
 	return (
-		<div className='App'>
-			<SearchBar />
-			{translationsParsed.map(element => {
-				return <p>{element.source} : {element.target}</p>
-			})}
-		</div>
+		<Fragment>
+			<Store>
+				<Layout>
+					<Switch>
+						<Route path={links.search} component={SearchPage} />
+						<Route path={links.fiches} component={FichesPage} />
+						<Route path={links.homePage} component={SearchPage} />
+					</Switch>
+				</Layout>
+			</Store>
+		</Fragment>
 	);
 }
-
-export default App;

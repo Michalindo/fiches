@@ -1,0 +1,17 @@
+.fiches {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+	column-gap: 4rem;
+	row-gap: 2rem;
+
+	&-heading {
+		grid-column: 1 / -1;
+		display: flex;
+		height: 10rem;
+		align-items: center;
+		justify-content: space-between;
+		h1 {
+			font-size: 3rem;
+		}
+	}
+}

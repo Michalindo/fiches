@@ -1,41 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { strings } from '../../shared/strings';
+import React, { useEffect, useState, useContext } from 'react';
 import useDebounce from '../../utils/useDebounce';
+import Input from '../../UI/Input/Input';
+import { strings } from '../../shared/strings';
+import { Context } from '../../shared/store';
 import './SearchBar.scss';
 
 export default function SearchBar() {
+	const [, dispatch] = useContext(Context);
 	const [query, setQuery] = useState('');
-	const [data, setData] = useState({});
-	const [isSearching, setIsSearching] = useState(false);
 
 	const debouncedSearchTerm = useDebounce(query, 1000);
 
-	// useEffect(() => {
-	// 	if (debouncedSearchTerm) {
-	// 		setIsSearching(true);
-	// 		makeApiCall(debouncedSearchTerm).then((res) => {
-	// 			setIsSearching(false);
-	// 			setData(res);
-	// 		});
-	// 	} else {
-	// 		setData([]);
-	// 	}
-	// }, [debouncedSearchTerm]);
+	useEffect(() => {
+		if (debouncedSearchTerm) {
+			dispatch({ type: 'updateSearchQuery', payload: debouncedSearchTerm });
+		}
+	}, [debouncedSearchTerm, dispatch]);
 
 	return (
-		<div>
-			<input
-				className='searchbar'
+		<div className='searchbar'>
+			<p className='searchbar-description'>{strings.searchBar.description}</p>
+			<Input
+				label='searchbar-label'
+				className='searchbar-input'
+				type='input'
 				placeholder={strings.searchBar.inputPlaceholder}
-				// onChange={(e) => setQuery(e.target.value, 500)}
+				changed={(e) => setQuery(e.target.value.toLowerCase())}
 			/>
 		</div>
 	);
-}
-
-async function makeApiCall(searchTerm) {
-	const URL1 = `http://localhost:3001/ponsApi/dict/${searchTerm}`;
-	const response = await axios.get(URL1);
-	return response.data;
 }

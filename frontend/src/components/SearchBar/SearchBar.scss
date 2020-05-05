@@ -1,0 +1,25 @@
+.searchbar {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 5rem;
+	align-items: center;
+
+	&-description {
+		font-size: 3.5rem;
+		padding: 5rem 0 3rem 0;
+		letter-spacing: 0.1rem;
+		font-weight: 300;
+	}
+
+	&-label {
+		width: 30%;
+	}
+
+	&-input {
+		font-family: inherit;
+		width: 100%;
+		padding: 1rem;
+		font-size: 2rem;
+	}
+}

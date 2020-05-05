@@ -1,0 +1,65 @@
+.button {
+	position: relative;
+	background-color: #e0ddcf;
+	border: none;
+	border-radius: 2rem;
+	color: #3f5e5a;
+	outline: none;
+	cursor: pointer;
+	font: inherit;
+	padding: 1rem;
+	margin: 1.5rem;
+	font-weight: bold;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	text-decoration: none;
+	overflow: hidden;
+
+	&::after {
+		content: "";
+		background: white;
+		display: block;
+		position: absolute;
+		padding-top: 300%;
+		padding-left: 350%;
+		margin-left: -2rem !important;
+		margin-top: -120%;
+		opacity: 0;
+		transition: all 0.8s;
+	}
+
+	&:hover,
+	&:active {
+		color: #7d869c;
+	}
+
+	&:active {
+		color: #7d869c;
+		&::after {
+			padding: 0;
+			margin: 0;
+			opacity: 1;
+			transition: 0s;
+		}
+	}
+
+	&:disabled {
+		color: #cccccc;
+		cursor: not-allowed;
+	}
+
+	&--small {
+		background-color: transparent;
+		padding: 0.5rem;
+		margin: 0;
+		font-size: 1.6rem;
+	}
+}
+
+.success {
+	color: #3ea031;
+}
+
+.danger {
+	color: #944317;
+}

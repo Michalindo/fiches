@@ -1,0 +1,17 @@
+{
+	"name": "fiches",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"frontend": "npm start --prefix frontend",
+		"backend": "npm run server --prefix backend",
+		"start": "concurrently \"npm run backend\" \"npm run frontend\""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {},
+	"devDependencies": {
+		"concurrently": "^5.1.0"
+	}
+}
