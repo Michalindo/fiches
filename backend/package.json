@@ -5,7 +5,8 @@
 	"scripts": {
 		"server": "node src/index.js",
 		"develop": "nodemon index.js",
-		"lint": "eslint"
+		"lint": "eslint",
+		"test": "mocha ./src/test/*.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -21,6 +22,10 @@
 	"devDependencies": {
 		"concurrently": "^5.1.0",
 		"eslint": "^6.8.0",
-		"nodemon": "^2.0.3"
+		"nodemon": "^2.0.3",
+		"chai": "^3.5.0",
+		"chai-http": "^2.0.1",
+		"@types/chai-http": "^4.2.0",
+		"mocha": "^2.4.5"
 	}
 }

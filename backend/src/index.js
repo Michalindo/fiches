@@ -22,3 +22,5 @@ app.use('/fiches', fichesRoutes);
 app.listen(port, () =>
 	console.log(`Express app listening at http://localhost:${port}`)
 );
+
+module.exports = app;
