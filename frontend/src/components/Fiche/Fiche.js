@@ -5,9 +5,9 @@ import Input from '../../UI/Input/Input';
 import { strings } from '../../shared/strings';
 import { patchFiche } from '../../utils/apiFunctions';
 
-export default function Fiche(props) {
+export default function Fiche(props) { // arrow funciton // no default //
 	const [isRotated, setIsRotate] = useState(false);
-	const [fiche, setFiche] = useState(props.el);
+	const [fiche, setFiche] = useState(props.el); // flaschcard
 
 	const rotate = () => {
 		if (!props.editMode) {
@@ -20,40 +20,41 @@ export default function Fiche(props) {
 		results: fiche.results,
 	};
 
-	useEffect(() => {
+	useEffect(() => { // hooks top
 		if (props.editMode) {
-			setIsRotate(true);
+			setIsRotate(true); // setIsRotate -- can indicates that it is still rotating
 		} else {
-			setIsRotate(false);
+			setIsRotate(false); // setIsRotated(propr.editMode)
 		}
 	}, [props.editMode]);
 
-	const handleClick = (e) => {
+	const handleClick = (e) => { // not used ?
 		e.stopPropagation();
 	};
 
 	const changeSelected = (e, el) => {
-		e.stopPropagation();
+		e.stopPropagation(); // what for ?
 		el.selected = !el.selected;
 		setFiche({
 			...fiche,
 			results: [...fiche.results],
 			selected: [fiche.results.selected, el.selected],
 		});
-		console.log(updatedData.results);
+		console.log(updatedData.results); // no console.log
 	};
 
 	const updateFiche = (e, data) => {
-		e.stopPropagation();
+		e.stopPropagation(); // what for ?
 		patchFiche(data);
 	};
 
 	const removeFiche = (e, id) => {
 		e.stopPropagation();
-		props.deleteFiche(id);
+		props.deleteFiche(id); // redux would match here perfectly // this kind of solution is rather not scalable
+		// dispathc(REMOVE_FFISCH(id))
 	};
 
-	const controlButtons = props.editMode && (
+	const controlButtons = props.editMode && ( // should have been in separate component
 		<div className='fiches-item-controlButtons'>
 			<Button
 				className='button button--small success'
@@ -79,11 +80,8 @@ export default function Fiche(props) {
 					</div>
 					<div className='fiches-item-face fiches-item-face--back'>
 						{fiche.results
-							.filter((el) => {
-								return !props.editMode ? el.selected : el;
-							})
-							.map((el, i) => {
-								return (
+							.filter((el) =>  !props.editMode ? el.selected : el);
+							.map((el, i) =>
 									<div key={i} className='fiches-item-translations'>
 										<p>{el.source.replace(/\u21b5/g, '')}</p>
 										<p>{el.target.replace(/\u21b5/g, '')}</p>

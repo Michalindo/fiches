@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
 		const fiches = await Fiche.find();
 		res.json(fiches);
 	} catch (err) {
-		res.json({ message: err });
+		res.json({ message: err }); // dont reveal this kind of information to client // see owasp top 10
 	}
 });
 
@@ -43,7 +43,7 @@ router.patch('/', async (req, res) => {
 		);
 		res.json(updatedFiche);
 	} catch (err) {
-		res.json({ message: err });
+		res.json({ message: err, status: 'NOT_SUCCED_NOT_FOUND' }); // status // fiskzi nie znalezione
 	}
 });
 

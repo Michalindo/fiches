@@ -1,7 +1,7 @@
 import axios from 'axios';
-const fichesURL = 'http://localhost:3001/fiches';
+const fichesURL = 'http://localhost:3001/fiches'; // localhost:3001 keep in config // config.js
 
-export async function getTranslations(searchTerm) {
+export async function getTranslations(searchTerm) { // ficheService
 	const URL = `http://localhost:3001/ponsApi/dict/${searchTerm}`;
 	const response = await axios.get(URL);
 	return response.data;

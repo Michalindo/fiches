@@ -10,7 +10,7 @@ import Button from '../../UI/Button/Button';
 import { strings } from '../../shared/strings';
 import TranslationTable from '../../components/TranslationTable/TranslationTable';
 import { getTranslations, postFiche } from '../../utils/apiFunctions';
-import { Context } from '../../shared/store';
+import { Context } from '../../shared/store'; // what kind of context is that better naming
 
 export default function SearchPage() {
 	const [state] = useContext(Context);
@@ -24,7 +24,7 @@ export default function SearchPage() {
 
 	useEffect(() => {
 		if (state.searchQuery !== '') {
-			setIsSearching(true);
+			setIsSearching(true); // can be nicely handled with redux middleware e.g.
 			getTranslations(state.searchQuery).then((res) => {
 				setIsSearching(false);
 				if (res[0]) {

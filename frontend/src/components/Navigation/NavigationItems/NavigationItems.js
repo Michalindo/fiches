@@ -1,10 +1,10 @@
 import React from 'react';
 import NavigationItem from '../NavigationItem/NavigationItem';
-import { strings } from '../../../shared/strings';
+import { strings } from '../../../shared/strings'; // maybe name it translations
 import { links } from '../../../shared/links';
 import './NavigationItems.scss';
 
-export default function navigationItems() {
+export default function navigationItems() { // upperCase
 	return (
 		<ul className='navigation'>
 			<NavigationItem link={links.search}>

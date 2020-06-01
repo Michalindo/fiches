@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import './Input.scss';
 
-export default function Input(props) {
+export default function Input(props) { // in separates component // hard to maintain and it confuses a bit
 	let inputElement = null;
 
 	switch (props.elementType) {

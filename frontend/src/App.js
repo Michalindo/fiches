@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.scss';
 import SearchPage from './containers/SearchPage/SearchPage';
 import Layout from './hoc/Layout/Layout';
-import FichesPage from './containers/FichesPage/FichesPage';
+import FichesPage from './containers/FichesPage/FichesPage'; // FlaschCard
 import { links } from './shared/links';
 import { Store } from './shared/store';
 

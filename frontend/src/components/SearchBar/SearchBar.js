@@ -9,11 +9,11 @@ export default function SearchBar() {
 	const [, dispatch] = useContext(Context);
 	const [query, setQuery] = useState('');
 
-	const debouncedSearchTerm = useDebounce(query, 1000);
+	const debouncedSearchTerm = useDebounce(query, 1000); // 1 sec is to much less than 500
 
 	useEffect(() => {
 		if (debouncedSearchTerm) {
-			dispatch({ type: 'updateSearchQuery', payload: debouncedSearchTerm });
+			dispatch({ type: 'updateSearchQuery', payload: debouncedSearchTerm }); // would be good to start search when there are more than n characters
 		}
 	}, [debouncedSearchTerm, dispatch]);
 
